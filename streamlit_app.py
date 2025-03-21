@@ -20,7 +20,6 @@ import subprocess
 import shutil
 from pathlib import Path
 from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.core.utils import ChromeType
 
 # 로깅 설정
 logging.basicConfig(
@@ -95,8 +94,13 @@ def get_compatible_chromedriver():
             # 환경에 맞는 ChromeDriver 설치
             if not driver_path.exists():
                 logger.info(f"ChromeDriver 설치 중 (Chromium {chromium_major_version}용)")
-                # Chromium 용 드라이버 설치
-                driver_path = ChromeDriverManager(version=chromium_major_version, chrome_type=ChromeType.CHROMIUM).install()
+                try:
+                    # 새로운 webdriver-manager 버전은 browser_type 문자열 사용
+                    driver_path = ChromeDriverManager(version=chromium_major_version, browser_type="chromium").install()
+                except TypeError:
+                    # 구 버전의 webdriver-manager에서는 browser_type 매개변수 지원 안 함
+                    logger.info("browser_type 매개변수가 지원되지 않아 기본 ChromeDriver 사용")
+                    driver_path = ChromeDriverManager(version=chromium_major_version).install()
             
             logger.info(f"ChromeDriver 경로: {driver_path}")
             return Service(executable_path=driver_path)
