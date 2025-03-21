@@ -5,7 +5,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium_stealth import stealth
 import time
 import os
@@ -20,6 +19,8 @@ import platform
 import subprocess
 import shutil
 from pathlib import Path
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.core.utils import ChromeType
 
 # 로깅 설정
 logging.basicConfig(
@@ -94,8 +95,6 @@ def get_compatible_chromedriver():
             # 환경에 맞는 ChromeDriver 설치
             if not driver_path.exists():
                 logger.info(f"ChromeDriver 설치 중 (Chromium {chromium_major_version}용)")
-                from webdriver_manager.chrome import ChromeDriverManager
-                from webdriver_manager.core.utils import ChromeType
                 # Chromium 용 드라이버 설치
                 driver_path = ChromeDriverManager(version=chromium_major_version, chrome_type=ChromeType.CHROMIUM).install()
             
@@ -108,8 +107,16 @@ def get_compatible_chromedriver():
     
     except Exception as e:
         logger.error(f"ChromeDriver 설정 중 오류 발생: {e}", exc_info=True)
-        # 오류 발생 시 기본 ChromeDriverManager 사용
-        return Service(ChromeDriverManager().install())
+        # 오류 발생 시 기본 ChromeDriverManager 사용 시도
+        try:
+            return Service(ChromeDriverManager().install())
+        except Exception as e2:
+            logger.error(f"최종 ChromeDriver 설정 실패: {e2}", exc_info=True)
+            # 최후의 수단: 시스템에 설치된 기본 chromedriver 사용 시도
+            if os.path.exists("/usr/bin/chromedriver"):
+                return Service(executable_path="/usr/bin/chromedriver")
+            else:
+                raise Exception("ChromeDriver를 설정할 수 없습니다. 시스템에 설치된 chromedriver가 없습니다.")
 
 def setup_chrome_options():
     """Chrome/Chromium 브라우저 옵션을 설정하는 함수"""
@@ -652,7 +659,6 @@ def scrape_article(url):
 
 def create_copy_button(text, button_text="복사하기"):
     """클립보드에 복사하는 버튼 생성"""
-    import json
     from streamlit.components.v1 import html
     
     # 텍스트를 이스케이프하여 JavaScript에서 안전하게 사용할 수 있도록 함
