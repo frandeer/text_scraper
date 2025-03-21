@@ -1,4 +1,5 @@
-google-chrome-stable
+chromium
+chromium-driver
 xvfb
 libxpm4
 libxrender1

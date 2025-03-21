@@ -64,33 +64,40 @@ def get_compatible_chromedriver():
         if is_streamlit_cloud:
             logger.info("Streamlit Cloud 환경 감지됨")
             
-            # Streamlit Cloud에서는 이미 Chrome이 설치되어 있으므로 해당 경로 사용
-            CHROME_PATH = "/usr/bin/google-chrome"
+            # 시스템에 설치된 chromium-driver를 찾아봄
+            system_driver_path = "/usr/bin/chromedriver"
+            if os.path.exists(system_driver_path):
+                logger.info(f"시스템에 설치된 ChromeDriver 사용: {system_driver_path}")
+                return Service(executable_path=system_driver_path)
             
-            # Chrome 버전 확인
-            chrome_version = ""
+            # 시스템에 드라이버가 없으면 Chromium 사용
+            CHROMIUM_PATH = "/usr/bin/chromium"
+            
+            # Chromium 버전 확인
+            chromium_version = ""
             try:
-                chrome_version_cmd = subprocess.run(
-                    [CHROME_PATH, "--version"], 
+                chromium_version_cmd = subprocess.run(
+                    [CHROMIUM_PATH, "--version"], 
                     capture_output=True, 
                     text=True
                 )
-                chrome_version = chrome_version_cmd.stdout.strip().split(" ")[-1]
-                logger.info(f"감지된 Chrome 버전: {chrome_version}")
+                chromium_version = chromium_version_cmd.stdout.strip().split(" ")[-1]
+                logger.info(f"감지된 Chromium 버전: {chromium_version}")
             except Exception as e:
-                logger.error(f"Chrome 버전 확인 실패: {e}")
-                chrome_version = "114.0.5735.90"  # 기본 버전
+                logger.error(f"Chromium 버전 확인 실패: {e}")
+                chromium_version = "114.0.5735.90"  # 기본 버전
             
             # ChromeDriver 다운로드 경로 설정
-            chrome_major_version = chrome_version.split('.')[0]
+            chromium_major_version = chromium_version.split('.')[0]
             driver_path = Path("/tmp/chromedriver")
             
             # 환경에 맞는 ChromeDriver 설치
             if not driver_path.exists():
-                logger.info(f"ChromeDriver 설치 중 (Chrome {chrome_major_version}용)")
+                logger.info(f"ChromeDriver 설치 중 (Chromium {chromium_major_version}용)")
                 from webdriver_manager.chrome import ChromeDriverManager
                 from webdriver_manager.core.utils import ChromeType
-                driver_path = ChromeDriverManager(version=chrome_major_version, chrome_type=ChromeType.GOOGLE).install()
+                # Chromium 용 드라이버 설치
+                driver_path = ChromeDriverManager(version=chromium_major_version, chrome_type=ChromeType.CHROMIUM).install()
             
             logger.info(f"ChromeDriver 경로: {driver_path}")
             return Service(executable_path=driver_path)
@@ -105,13 +112,20 @@ def get_compatible_chromedriver():
         return Service(ChromeDriverManager().install())
 
 def setup_chrome_options():
-    """Chrome 브라우저 옵션을 설정하는 함수"""
+    """Chrome/Chromium 브라우저 옵션을 설정하는 함수"""
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--window-size=1920,1080")
+    
+    # Streamlit Cloud에서는 추가 설정
+    is_streamlit_cloud = os.environ.get('IS_STREAMLIT_CLOUD') == 'true'
+    if is_streamlit_cloud:
+        logger.info("Streamlit Cloud 환경에 맞는 브라우저 옵션 설정")
+        # Chromium 경로 명시
+        chrome_options.binary_location = "/usr/bin/chromium"
     
     # 봇 감지 우회를 위한 설정
     user_agents = [
