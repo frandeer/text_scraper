@@ -625,7 +625,7 @@ if mode == "웹 스크래핑":
     url = st.text_input("스크랩핑할 기사 URL 입력", "")
     
     # 사이트 예시 제공
-    st.caption("지원 사이트 예시: 위시켓(yozm.wishket.com), 브런치(brunch.co.kr), 미디엄(medium.com), 벨로그(velog.io) 등")
+    st.caption("지원 사이트 예시: 브런치(brunch.co.kr), 미디엄(medium.com), 벨로그(velog.io) 등")
     
     # 결과 저장 변수 초기화
     if 'results' not in st.session_state:

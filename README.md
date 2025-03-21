@@ -21,16 +21,16 @@ pip install streamlit selenium webdriver-manager
 
 프로젝트 폴더에서 다음 명령어를 실행합니다:
 ```bash
-streamlit run wishket_scraper.py
+streamlit run streamlit_app.py
 ```
 
 ## 사용 방법
 
-1. 스크랩핑하고자 하는 Wishket 기사의 URL을 입력합니다.
+1. 스크랩핑하고자 하는 기사의 URL을 입력합니다.
 2. '스크랩하기' 버튼을 클릭합니다.
 3. 스크랩핑이 완료되면 기사 내용을 확인하고 필요한 경우 다운로드할 수 있습니다.
 
 ## 참고사항
 
-- 이 스크래퍼는 Wishket의 '요즘IT' 기사를 대상으로 최적화되어 있습니다.
+- 이 스크래퍼는 기사의 URL을 대상으로 최적화되어 있습니다.
 - 웹사이트의 구조가 변경되면 스크랩핑이 제대로 작동하지 않을 수 있습니다.
