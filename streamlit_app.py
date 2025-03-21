@@ -85,7 +85,7 @@ def get_compatible_chromedriver():
                 logger.info(f"감지된 Chromium 버전: {chromium_version}")
             except Exception as e:
                 logger.error(f"Chromium 버전 확인 실패: {e}")
-                chromium_version = "114.0.5735.90"  # 기본 버전
+                chromium_version = "120.0.6099.224"  # 기본 버전
             
             # ChromeDriver 다운로드 경로 설정
             chromium_major_version = chromium_version.split('.')[0]
