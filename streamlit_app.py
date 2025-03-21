@@ -18,8 +18,10 @@ import json
 import platform
 import subprocess
 import shutil
+import sys
 from pathlib import Path
 from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.core.os_manager import ChromeType
 
 # 로깅 설정
 logging.basicConfig(
@@ -36,6 +38,71 @@ logger = logging.getLogger("article_scraper")
 st.set_page_config(page_title="기사 콘텐츠 스크래퍼", page_icon="🔍", layout="wide")
 st.title("기사 콘텐츠 스크래퍼")
 st.markdown("다양한 사이트의 기사 내용을 추출합니다.")
+
+def check_environment():
+    """
+    현재 실행 환경의 파이썬 및 패키지 정보를 확인하는 함수
+    """
+    env_info = {
+        "python_version": sys.version,
+        "platform": platform.platform(),
+        "is_streamlit_cloud": os.environ.get('IS_STREAMLIT_CLOUD') == 'true'
+    }
+    
+    # pip 패키지 목록 확인
+    try:
+        pip_list = subprocess.run(
+            [sys.executable, "-m", "pip", "list"], 
+            capture_output=True, 
+            text=True
+        )
+        env_info["pip_packages"] = pip_list.stdout
+        
+        # webdriver-manager 버전 확인
+        for line in pip_list.stdout.splitlines():
+            if "webdriver-manager" in line:
+                env_info["webdriver_manager_version"] = line.strip()
+                break
+    except Exception as e:
+        env_info["pip_error"] = str(e)
+    
+    # Chromium 버전 확인
+    try:
+        CHROMIUM_PATH = "/usr/bin/chromium"
+        if os.path.exists(CHROMIUM_PATH):
+            chromium_version_cmd = subprocess.run(
+                [CHROMIUM_PATH, "--version"], 
+                capture_output=True, 
+                text=True
+            )
+            env_info["chromium_version"] = chromium_version_cmd.stdout.strip()
+    except Exception as e:
+        env_info["chromium_error"] = str(e)
+    
+    # Chrome 버전 확인 (Windows/Mac)
+    if not env_info.get("is_streamlit_cloud", False):
+        try:
+            if platform.system() == "Windows":
+                chrome_path = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
+                if os.path.exists(chrome_path):
+                    chrome_version_cmd = subprocess.run(
+                        [chrome_path, "--version"], 
+                        capture_output=True, 
+                        text=True
+                    )
+                    env_info["chrome_version"] = chrome_version_cmd.stdout.strip()
+            elif platform.system() == "Darwin":  # macOS
+                chrome_version_cmd = subprocess.run(
+                    ["/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", "--version"], 
+                    capture_output=True, 
+                    text=True
+                )
+                env_info["chrome_version"] = chrome_version_cmd.stdout.strip()
+        except Exception as e:
+            env_info["chrome_error"] = str(e)
+    
+    logger.info(f"환경 정보: {env_info}")
+    return env_info
 
 def detect_site_type(url):
     """URL을 기반으로 사이트 유형을 감지합니다."""
@@ -94,13 +161,28 @@ def get_compatible_chromedriver():
             # 환경에 맞는 ChromeDriver 설치
             if not driver_path.exists():
                 logger.info(f"ChromeDriver 설치 중 (Chromium {chromium_major_version}용)")
+                
+                # webdriver-manager 최신 버전 사용 방식 (3.8.0+)
                 try:
-                    # 새로운 webdriver-manager 버전은 browser_type 문자열 사용
-                    driver_path = ChromeDriverManager(version=chromium_major_version, browser_type="chromium").install()
-                except TypeError:
-                    # 구 버전의 webdriver-manager에서는 browser_type 매개변수 지원 안 함
-                    logger.info("browser_type 매개변수가 지원되지 않아 기본 ChromeDriver 사용")
-                    driver_path = ChromeDriverManager(version=chromium_major_version).install()
+                    from webdriver_manager.chrome import ChromeDriverManager
+                    from webdriver_manager.core.os_manager import ChromeType
+                    
+                    # 명시적으로 크롬 유형을 지정하고 브라우저 버전과 일치하는 드라이버 설치
+                    driver_path = ChromeDriverManager(
+                        chrome_type=ChromeType.CHROMIUM
+                    ).install()
+                    logger.info(f"최신 webdriver-manager 방식으로 ChromeDriver 설치 성공")
+                except Exception as e1:
+                    logger.warning(f"최신 방식의 ChromeDriver 설치 실패: {e1}")
+                    
+                    # 구버전 webdriver-manager 사용 방식 시도
+                    try:
+                        # 정확한 버전 없이 기본 ChromeDriver 설치
+                        driver_path = ChromeDriverManager().install()
+                        logger.info(f"기본 ChromeDriver 설치 성공")
+                    except Exception as e2:
+                        logger.error(f"모든 ChromeDriver 설치 방법 실패: {e1}, {e2}")
+                        raise Exception(f"ChromeDriver 설치 실패: {e2}")
             
             logger.info(f"ChromeDriver 경로: {driver_path}")
             return Service(executable_path=driver_path)
@@ -136,7 +218,12 @@ def setup_chrome_options():
     if is_streamlit_cloud:
         logger.info("Streamlit Cloud 환경에 맞는 브라우저 옵션 설정")
         # Chromium 경로 명시
-        chrome_options.binary_location = "/usr/bin/chromium"
+        CHROMIUM_PATH = "/usr/bin/chromium"
+        if os.path.exists(CHROMIUM_PATH):
+            chrome_options.binary_location = CHROMIUM_PATH
+            logger.info(f"Chromium 경로 설정: {CHROMIUM_PATH}")
+        else:
+            logger.warning(f"Chromium 경로를 찾을 수 없음: {CHROMIUM_PATH}")
     
     # 봇 감지 우회를 위한 설정
     user_agents = [
@@ -703,6 +790,10 @@ def create_copy_button(text, button_text="복사하기"):
 st.sidebar.title("옵션")
 mode = st.sidebar.radio("작업 모드 선택", ["웹 스크래핑", "저장된 HTML 파일 읽기"])
 
+# 환경 정보 초기화 (시작 시 자동으로 수집)
+if 'env_info' not in st.session_state:
+    st.session_state.env_info = check_environment()
+
 if mode == "웹 스크래핑":
     # URL 입력 필드 (기본값 제거)
     url = st.text_input("스크랩핑할 기사 URL 입력", "")
@@ -773,6 +864,33 @@ if st.session_state and 'results' in st.session_state and st.session_state.resul
 st.sidebar.markdown("---")
 st.sidebar.subheader("HTML 디버깅")
 debug_mode = st.sidebar.checkbox("HTML 구조 디버깅 모드")
+
+# 시스템 환경 정보 표시
+st.sidebar.markdown("---")
+st.sidebar.subheader("시스템 환경 정보")
+show_env_info = st.sidebar.checkbox("환경 정보 표시")
+
+if show_env_info and 'env_info' in st.session_state:
+    env_info = st.session_state.env_info
+    
+    st.sidebar.markdown("#### 기본 정보")
+    st.sidebar.text(f"Python: {env_info.get('python_version', '').split()[0]}")
+    st.sidebar.text(f"Platform: {env_info.get('platform', '')}")
+    
+    if "chromium_version" in env_info:
+        st.sidebar.markdown("#### Chrome/Chromium 정보")
+        st.sidebar.text(f"{env_info.get('chromium_version', '')}")
+    elif "chrome_version" in env_info:
+        st.sidebar.markdown("#### Chrome/Chromium 정보")
+        st.sidebar.text(f"{env_info.get('chrome_version', '')}")
+    
+    if "webdriver_manager_version" in env_info:
+        st.sidebar.markdown("#### WebDriver Manager")
+        st.sidebar.text(env_info.get('webdriver_manager_version', ''))
+    
+    # 패키지 정보 전체 보기 버튼
+    if st.sidebar.button("패키지 정보 전체 보기"):
+        st.sidebar.text_area("Pip 패키지 목록", env_info.get("pip_packages", "정보 없음"), height=200)
 
 if debug_mode and 'results' in st.session_state and st.session_state.results and 'page_source_file' in st.session_state.results:
     st.sidebar.markdown("#### HTML 요소 검사")
