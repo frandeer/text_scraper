@@ -1,5 +1,5 @@
-streamlit>=1.27.0
-selenium>=4.10.0
-webdriver-manager>=4.0.0
-selenium_stealth>=1.0.0
-bs4>=0.0.1
+streamlit==1.35.0
+selenium==4.29.0
+selenium-stealth==1.0.6
+webdriver-manager==4.0.2
+beautifulsoup4==4.12.3

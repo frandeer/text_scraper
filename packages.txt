@@ -1,2 +1,7 @@
-chromium
-chromium-driver
+google-chrome-stable
+xvfb
+libxpm4
+libxrender1
+libgtk2.0-0
+libnss3
+libgconf-2-4

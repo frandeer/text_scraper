@@ -16,6 +16,10 @@ from bs4 import BeautifulSoup
 import glob
 import re
 import json
+import platform
+import subprocess
+import shutil
+from pathlib import Path
 
 # 로깅 설정
 logging.basicConfig(
@@ -45,6 +49,60 @@ def detect_site_type(url):
         return "velog"
     else:
         return "unknown"
+
+def get_compatible_chromedriver():
+    """
+    Streamlit Cloud와 호환되는 ChromeDriver를 설정하는 함수
+    
+    Returns:
+        Service: Chrome WebDriver 서비스 객체
+    """
+    try:
+        # 환경 감지
+        is_streamlit_cloud = os.environ.get('IS_STREAMLIT_CLOUD') == 'true'
+        
+        if is_streamlit_cloud:
+            logger.info("Streamlit Cloud 환경 감지됨")
+            
+            # Streamlit Cloud에서는 이미 Chrome이 설치되어 있으므로 해당 경로 사용
+            CHROME_PATH = "/usr/bin/google-chrome"
+            
+            # Chrome 버전 확인
+            chrome_version = ""
+            try:
+                chrome_version_cmd = subprocess.run(
+                    [CHROME_PATH, "--version"], 
+                    capture_output=True, 
+                    text=True
+                )
+                chrome_version = chrome_version_cmd.stdout.strip().split(" ")[-1]
+                logger.info(f"감지된 Chrome 버전: {chrome_version}")
+            except Exception as e:
+                logger.error(f"Chrome 버전 확인 실패: {e}")
+                chrome_version = "114.0.5735.90"  # 기본 버전
+            
+            # ChromeDriver 다운로드 경로 설정
+            chrome_major_version = chrome_version.split('.')[0]
+            driver_path = Path("/tmp/chromedriver")
+            
+            # 환경에 맞는 ChromeDriver 설치
+            if not driver_path.exists():
+                logger.info(f"ChromeDriver 설치 중 (Chrome {chrome_major_version}용)")
+                from webdriver_manager.chrome import ChromeDriverManager
+                from webdriver_manager.core.utils import ChromeType
+                driver_path = ChromeDriverManager(version=chrome_major_version, chrome_type=ChromeType.GOOGLE).install()
+            
+            logger.info(f"ChromeDriver 경로: {driver_path}")
+            return Service(executable_path=driver_path)
+        else:
+            # 로컬 환경에서는 webdriver-manager 사용
+            logger.info("로컬 환경 감지됨, webdriver-manager 사용")
+            return Service(ChromeDriverManager().install())
+    
+    except Exception as e:
+        logger.error(f"ChromeDriver 설정 중 오류 발생: {e}", exc_info=True)
+        # 오류 발생 시 기본 ChromeDriverManager 사용
+        return Service(ChromeDriverManager().install())
 
 def setup_chrome_options():
     """Chrome 브라우저 옵션을 설정하는 함수"""
@@ -401,7 +459,8 @@ def scrape_article(url):
     
     try:
         with st.spinner('웹 페이지 로딩 중...'):
-            service = Service(ChromeDriverManager().install())
+            # ChromeDriverManager 대신 get_compatible_chromedriver 함수 사용
+            service = get_compatible_chromedriver()
             driver = webdriver.Chrome(service=service, options=chrome_options)
             
             # Selenium Stealth 적용 (봇 감지 회피)
