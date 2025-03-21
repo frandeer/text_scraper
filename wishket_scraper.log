@@ -1,0 +1,270 @@
+2025-03-18 11:41:58,547 - wishket_scraper - INFO - 스크랩 시작: https://yozm.wishket.com/magazine/detail/2877
+2025-03-18 11:41:58,549 - WDM - INFO - ====== WebDriver manager ======
+2025-03-18 11:42:00,757 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-18 11:42:00,800 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-18 11:42:00,831 - WDM - INFO - Driver [C:\Users\HP\.wdm\drivers\chromedriver\win64\134.0.6998.88\chromedriver-win32/chromedriver.exe] found in cache
+2025-03-18 11:42:03,411 - wishket_scraper - INFO - 기사 컨텐츠 로드 완료
+2025-03-18 11:42:06,751 - wishket_scraper - INFO - HTML 소스가 page_sources/article_2877_20250318_114206.html에 저장되었습니다.
+2025-03-18 11:42:06,817 - wishket_scraper - ERROR - 내용 추출 실패: Message: no such element: Unable to locate element: {"method":"css selector","selector":"div.article-body-container"}
+  (Session info: chrome=134.0.6998.89); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x0054B5A3+24387]
+	(No symbol) [0x004D5904]
+	(No symbol) [0x003B0753]
+	(No symbol) [0x003F8BA9]
+	(No symbol) [0x003F8EFB]
+	(No symbol) [0x004419C2]
+	(No symbol) [0x0041D894]
+	(No symbol) [0x0043F138]
+	(No symbol) [0x0041D646]
+	(No symbol) [0x003EC59F]
+	(No symbol) [0x003ED8E4]
+	GetHandleVerifier [0x0084D883+3179043]
+	GetHandleVerifier [0x00866CF9+3282585]
+	GetHandleVerifier [0x0086167C+3260444]
+	GetHandleVerifier [0x005E4330+650448]
+	(No symbol) [0x004DED0D]
+	(No symbol) [0x004DBAF8]
+	(No symbol) [0x004DBC99]
+	(No symbol) [0x004CE530]
+	BaseThreadInitThunk [0x773D5D49+25]
+	RtlInitializeExceptionChain [0x779DCE3B+107]
+	RtlGetAppContainerNamedObjectPath [0x779DCDC1+561]
+
+2025-03-18 11:45:07,199 - wishket_scraper - INFO - HTML 파일에서 내용 추출: page_sources\article_2877_20250318_114206.html
+2025-03-18 11:48:05,817 - wishket_scraper - INFO - HTML 파일에서 내용 추출: page_sources\article_2877_20250318_114206.html
+2025-03-18 11:48:05,868 - wishket_scraper - INFO - 선택된 컨테이너: main.
+2025-03-18 11:48:05,879 - wishket_scraper - INFO - HTML 파일에서 7264자 추출됨
+2025-03-18 11:51:20,025 - wishket_scraper - INFO - HTML 파일에서 내용 추출: page_sources\article_2877_20250318_114206.html
+2025-03-18 11:51:20,078 - wishket_scraper - INFO - 선택된 컨테이너: main.
+2025-03-18 11:51:20,087 - wishket_scraper - INFO - HTML 파일에서 7264자 추출됨
+2025-03-18 11:54:03,428 - wishket_scraper - INFO - HTML 파일에서 내용 추출: page_sources\article_2877_20250318_114206.html
+2025-03-18 11:54:03,480 - wishket_scraper - INFO - 선택된 컨테이너: main.
+2025-03-18 11:54:03,490 - wishket_scraper - INFO - HTML 파일에서 6725자 추출됨
+2025-03-18 11:54:59,381 - wishket_scraper - INFO - HTML 파일에서 내용 추출: page_sources\article_2877_20250318_114206.html
+2025-03-18 11:54:59,435 - wishket_scraper - INFO - 선택된 컨테이너: main.
+2025-03-18 11:54:59,447 - wishket_scraper - INFO - HTML 파일에서 6725자 추출됨
+2025-03-18 11:55:48,349 - wishket_scraper - INFO - HTML 파일에서 내용 추출: page_sources\article_2877_20250318_114206.html
+2025-03-18 11:55:48,402 - wishket_scraper - INFO - 선택된 컨테이너: main.
+2025-03-18 11:55:48,412 - wishket_scraper - INFO - HTML 파일에서 6725자 추출됨
+2025-03-18 11:58:27,710 - wishket_scraper - INFO - 스크랩 시작: https://yozm.wishket.com/magazine/detail/2887
+2025-03-18 11:58:27,711 - WDM - INFO - ====== WebDriver manager ======
+2025-03-18 11:58:29,907 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-18 11:58:29,937 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-18 11:58:29,970 - WDM - INFO - Driver [C:\Users\HP\.wdm\drivers\chromedriver\win64\134.0.6998.88\chromedriver-win32/chromedriver.exe] found in cache
+2025-03-18 11:58:32,485 - wishket_scraper - INFO - 기사 컨텐츠 로드 완료
+2025-03-18 11:58:35,792 - wishket_scraper - INFO - HTML 소스가 page_sources/article_2887_20250318_115835.html에 저장되었습니다.
+2025-03-18 11:58:35,855 - wishket_scraper - ERROR - 내용 추출 실패: Message: no such element: Unable to locate element: {"method":"css selector","selector":"div.article-body-container"}
+  (Session info: chrome=134.0.6998.89); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x0054B5A3+24387]
+	(No symbol) [0x004D5904]
+	(No symbol) [0x003B0753]
+	(No symbol) [0x003F8BA9]
+	(No symbol) [0x003F8EFB]
+	(No symbol) [0x004419C2]
+	(No symbol) [0x0041D894]
+	(No symbol) [0x0043F138]
+	(No symbol) [0x0041D646]
+	(No symbol) [0x003EC59F]
+	(No symbol) [0x003ED8E4]
+	GetHandleVerifier [0x0084D883+3179043]
+	GetHandleVerifier [0x00866CF9+3282585]
+	GetHandleVerifier [0x0086167C+3260444]
+	GetHandleVerifier [0x005E4330+650448]
+	(No symbol) [0x004DED0D]
+	(No symbol) [0x004DBAF8]
+	(No symbol) [0x004DBC99]
+	(No symbol) [0x004CE530]
+	BaseThreadInitThunk [0x773D5D49+25]
+	RtlInitializeExceptionChain [0x779DCE3B+107]
+	RtlGetAppContainerNamedObjectPath [0x779DCDC1+561]
+
+2025-03-18 11:58:35,856 - wishket_scraper - INFO - HTML 파일에서 내용 추출: page_sources/article_2887_20250318_115835.html
+2025-03-18 11:58:36,080 - wishket_scraper - INFO - 선택된 컨테이너: main.
+2025-03-18 11:58:36,094 - wishket_scraper - INFO - HTML 파일에서 7061자 추출됨
+2025-03-18 13:36:58,255 - wishket_scraper - INFO - 스크랩 시작: https://2ality.com/2025/02/what-is-typescript.html
+2025-03-18 13:36:58,256 - WDM - INFO - ====== WebDriver manager ======
+2025-03-18 13:37:00,270 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-18 13:37:00,296 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-18 13:37:00,322 - WDM - INFO - Driver [C:\Users\HP\.wdm\drivers\chromedriver\win64\134.0.6998.88\chromedriver-win32/chromedriver.exe] found in cache
+2025-03-18 13:37:18,479 - wishket_scraper - WARNING - 기사 콘텐츠 로드 대기 시간 초과: Message: 
+Stacktrace:
+	GetHandleVerifier [0x003CB5A3+24387]
+	(No symbol) [0x00355904]
+	(No symbol) [0x00230753]
+	(No symbol) [0x00278BA9]
+	(No symbol) [0x00278EFB]
+	(No symbol) [0x002C19C2]
+	(No symbol) [0x0029D894]
+	(No symbol) [0x002BF138]
+	(No symbol) [0x0029D646]
+	(No symbol) [0x0026C59F]
+	(No symbol) [0x0026D8E4]
+	GetHandleVerifier [0x006CD883+3179043]
+	GetHandleVerifier [0x006E6CF9+3282585]
+	GetHandleVerifier [0x006E167C+3260444]
+	GetHandleVerifier [0x00464330+650448]
+	(No symbol) [0x0035ED0D]
+	(No symbol) [0x0035BAF8]
+	(No symbol) [0x0035BC99]
+	(No symbol) [0x0034E530]
+	BaseThreadInitThunk [0x773D5D49+25]
+	RtlInitializeExceptionChain [0x779DCE3B+107]
+	RtlGetAppContainerNamedObjectPath [0x779DCDC1+561]
+
+2025-03-18 13:37:21,499 - wishket_scraper - INFO - HTML 소스가 page_sources/article_what-is-typescript.html_20250318_133721.html에 저장되었습니다.
+2025-03-18 13:37:21,548 - wishket_scraper - ERROR - 내용 추출 실패: Message: no such element: Unable to locate element: {"method":"css selector","selector":"div.article-body-container"}
+  (Session info: chrome=134.0.6998.89); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x003CB5A3+24387]
+	(No symbol) [0x00355904]
+	(No symbol) [0x00230753]
+	(No symbol) [0x00278BA9]
+	(No symbol) [0x00278EFB]
+	(No symbol) [0x002C19C2]
+	(No symbol) [0x0029D894]
+	(No symbol) [0x002BF138]
+	(No symbol) [0x0029D646]
+	(No symbol) [0x0026C59F]
+	(No symbol) [0x0026D8E4]
+	GetHandleVerifier [0x006CD883+3179043]
+	GetHandleVerifier [0x006E6CF9+3282585]
+	GetHandleVerifier [0x006E167C+3260444]
+	GetHandleVerifier [0x00464330+650448]
+	(No symbol) [0x0035ED0D]
+	(No symbol) [0x0035BAF8]
+	(No symbol) [0x0035BC99]
+	(No symbol) [0x0034E530]
+	BaseThreadInitThunk [0x773D5D49+25]
+	RtlInitializeExceptionChain [0x779DCE3B+107]
+	RtlGetAppContainerNamedObjectPath [0x779DCDC1+561]
+
+2025-03-18 13:37:21,549 - wishket_scraper - INFO - HTML 파일에서 내용 추출: page_sources/article_what-is-typescript.html_20250318_133721.html
+2025-03-18 13:37:21,613 - wishket_scraper - WARNING - HTML에서 주요 컨테이너를 찾을 수 없습니다. 대체 방법 시도...
+2025-03-18 13:37:21,628 - wishket_scraper - INFO - 대체 방법으로 16491자 추출됨
+2025-03-18 14:09:21,358 - wishket_scraper - INFO - 스크랩 시작: https://yozm.wishket.com/magazine/detail/2885
+2025-03-18 14:11:26,773 - wishket_scraper - INFO - 스크랩 시작: https://yozm.wishket.com/magazine/detail/2885
+2025-03-18 14:12:22,090 - wishket_scraper - INFO - 스크랩 시작: https://brunch.co.kr/@morningwalk/131
+2025-03-18 14:13:56,363 - WDM - INFO - ====== WebDriver manager ======
+2025-03-18 14:13:58,732 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-18 14:13:58,763 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-18 14:13:58,788 - WDM - INFO - Driver [C:\Users\HP\.wdm\drivers\chromedriver\win64\134.0.6998.88\chromedriver-win32/chromedriver.exe] found in cache
+2025-03-18 14:14:17,152 - wishket_scraper - WARNING - 기사 콘텐츠 로드 대기 시간 초과: Message: 
+Stacktrace:
+	GetHandleVerifier [0x007EB5A3+24387]
+	(No symbol) [0x00775904]
+	(No symbol) [0x00650753]
+	(No symbol) [0x00698BA9]
+	(No symbol) [0x00698EFB]
+	(No symbol) [0x006E19C2]
+	(No symbol) [0x006BD894]
+	(No symbol) [0x006DF138]
+	(No symbol) [0x006BD646]
+	(No symbol) [0x0068C59F]
+	(No symbol) [0x0068D8E4]
+	GetHandleVerifier [0x00AED883+3179043]
+	GetHandleVerifier [0x00B06CF9+3282585]
+	GetHandleVerifier [0x00B0167C+3260444]
+	GetHandleVerifier [0x00884330+650448]
+	(No symbol) [0x0077ED0D]
+	(No symbol) [0x0077BAF8]
+	(No symbol) [0x0077BC99]
+	(No symbol) [0x0076E530]
+	BaseThreadInitThunk [0x773D5D49+25]
+	RtlInitializeExceptionChain [0x779DCE3B+107]
+	RtlGetAppContainerNamedObjectPath [0x779DCDC1+561]
+
+2025-03-18 14:14:20,230 - wishket_scraper - INFO - HTML 소스가 page_sources/article_131_20250318_141420.html에 저장되었습니다.
+2025-03-18 14:14:46,554 - wishket_scraper - INFO - HTML 파일에서 내용 추출: page_sources\article_131_20250318_141420.html
+2025-03-18 14:14:46,600 - wishket_scraper - INFO - 선택된 컨테이너: main.
+2025-03-18 14:14:46,602 - wishket_scraper - INFO - HTML 파일에서 83자 추출됨
+2025-03-18 14:14:56,938 - wishket_scraper - INFO - HTML 파일에서 내용 추출: page_sources\article_what-is-typescript.html_20250318_133721.html
+2025-03-18 14:14:56,966 - wishket_scraper - WARNING - HTML에서 주요 컨테이너를 찾을 수 없습니다. 대체 방법 시도...
+2025-03-18 14:14:56,978 - wishket_scraper - INFO - 대체 방법으로 16491자 추출됨
+2025-03-18 14:33:00,369 - wishket_scraper - INFO - HTML 파일에서 내용 추출: page_sources\article_131_20250318_141420.html
+2025-03-18 14:33:00,417 - wishket_scraper - INFO - 선택된 컨테이너: main.
+2025-03-18 14:33:00,417 - wishket_scraper - INFO - HTML 파일에서 83자 추출됨
+2025-03-18 14:37:15,357 - article_scraper - INFO - HTML 파일에서 내용 추출: page_sources\article_131_20250318_141420.html
+2025-03-18 14:37:15,406 - article_scraper - INFO - 선택된 컨테이너: main.
+2025-03-18 14:37:15,407 - article_scraper - INFO - HTML 파일에서 83자 추출됨
+2025-03-18 14:39:03,504 - article_scraper - INFO - HTML 파일에서 내용 추출: page_sources\article_131_20250318_141420.html
+2025-03-18 14:39:03,552 - article_scraper - INFO - 선택된 컨테이너: main.
+2025-03-18 14:39:03,552 - article_scraper - INFO - HTML 파일에서 83자 추출됨
+2025-03-18 14:39:22,701 - article_scraper - INFO - 스크랩 시작: https://brunch.co.kr/@morningwalk/131 (사이트 유형: brunch)
+2025-03-18 14:39:22,704 - WDM - INFO - ====== WebDriver manager ======
+2025-03-18 14:39:25,223 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-18 14:39:25,287 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-18 14:39:25,319 - WDM - INFO - Driver [C:\Users\HP\.wdm\drivers\chromedriver\win64\134.0.6998.88\chromedriver-win32/chromedriver.exe] found in cache
+2025-03-18 14:39:28,340 - article_scraper - INFO - 기사 컨텐츠 로드 완료
+2025-03-18 14:39:31,416 - article_scraper - INFO - HTML 소스가 page_sources/brunch_article_131_20250318_143931.html에 저장되었습니다.
+2025-03-18 14:47:03,216 - article_scraper - INFO - 스크랩 시작: https://yozm.wishket.com/magazine/detail/2885 (사이트 유형: wishket)
+2025-03-18 14:47:03,218 - WDM - INFO - ====== WebDriver manager ======
+2025-03-18 14:47:05,652 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-18 14:47:05,681 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-18 14:47:05,707 - WDM - INFO - Driver [C:\Users\HP\.wdm\drivers\chromedriver\win64\134.0.6998.88\chromedriver-win32/chromedriver.exe] found in cache
+2025-03-18 14:47:08,380 - article_scraper - INFO - 기사 컨텐츠 로드 완료
+2025-03-18 14:47:11,644 - article_scraper - INFO - HTML 소스가 page_sources/wishket_article_2885_20250318_144711.html에 저장되었습니다.
+2025-03-18 14:47:11,743 - article_scraper - INFO - HTML 파일에서 내용 추출: page_sources/wishket_article_2885_20250318_144711.html
+2025-03-18 14:47:11,994 - article_scraper - INFO - 선택된 컨테이너: main.
+2025-03-18 14:47:12,003 - article_scraper - INFO - HTML 파일에서 5076자 추출됨
+2025-03-19 10:08:03,046 - article_scraper - INFO - 스크랩 시작: https://fronmpt.beehiiv.com/p/prompt (사이트 유형: unknown)
+2025-03-19 10:08:03,078 - WDM - INFO - ====== WebDriver manager ======
+2025-03-19 10:08:06,145 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-19 10:08:06,224 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-19 10:08:06,253 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-19 10:08:06,336 - WDM - INFO - WebDriver version 134.0.6998.88 selected
+2025-03-19 10:08:06,338 - WDM - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.88/win32/chromedriver-win32.zip
+2025-03-19 10:08:06,338 - WDM - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.88/win32/chromedriver-win32.zip
+2025-03-19 10:08:06,421 - WDM - INFO - Driver downloading response is 200
+2025-03-19 10:08:06,593 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-19 10:08:08,361 - WDM - INFO - Driver has been saved in cache [C:\Users\HP\.wdm\drivers\chromedriver\win64\134.0.6998.88]
+2025-03-19 10:08:27,281 - article_scraper - WARNING - 기사 콘텐츠 로드 대기 시간 초과: Message: 
+Stacktrace:
+	GetHandleVerifier [0x011FB5A3+24387]
+	(No symbol) [0x01185904]
+	(No symbol) [0x01060753]
+	(No symbol) [0x010A8BA9]
+	(No symbol) [0x010A8EFB]
+	(No symbol) [0x010F19C2]
+	(No symbol) [0x010CD894]
+	(No symbol) [0x010EF138]
+	(No symbol) [0x010CD646]
+	(No symbol) [0x0109C59F]
+	(No symbol) [0x0109D8E4]
+	GetHandleVerifier [0x014FD883+3179043]
+	GetHandleVerifier [0x01516CF9+3282585]
+	GetHandleVerifier [0x0151167C+3260444]
+	GetHandleVerifier [0x01294330+650448]
+	(No symbol) [0x0118ED0D]
+	(No symbol) [0x0118BAF8]
+	(No symbol) [0x0118BC99]
+	(No symbol) [0x0117E530]
+	BaseThreadInitThunk [0x773D5D49+25]
+	RtlInitializeExceptionChain [0x779DCE3B+107]
+	RtlGetAppContainerNamedObjectPath [0x779DCDC1+561]
+
+2025-03-19 10:08:30,322 - article_scraper - INFO - HTML 소스가 page_sources/unknown_article_prompt_20250319_100830.html에 저장되었습니다.
+2025-03-19 10:08:30,402 - article_scraper - INFO - HTML 파일에서 내용 추출: page_sources/unknown_article_prompt_20250319_100830.html
+2025-03-19 10:08:30,427 - article_scraper - WARNING - HTML에서 주요 컨테이너를 찾을 수 없습니다. 대체 방법 시도...
+2025-03-19 10:08:30,429 - article_scraper - INFO - 대체 방법으로 169자 추출됨
+2025-03-19 10:33:07,259 - article_scraper - INFO - 스크랩 시작: https://yozm.wishket.com/magazine/detail/2894 (사이트 유형: wishket)
+2025-03-19 10:33:07,260 - WDM - INFO - ====== WebDriver manager ======
+2025-03-19 10:33:10,001 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-19 10:33:10,037 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-19 10:33:10,067 - WDM - INFO - Driver [C:\Users\HP\.wdm\drivers\chromedriver\win64\134.0.6998.88\chromedriver-win32/chromedriver.exe] found in cache
+2025-03-19 10:33:12,815 - article_scraper - INFO - 기사 컨텐츠 로드 완료
+2025-03-19 10:33:16,104 - article_scraper - INFO - HTML 소스가 page_sources/wishket_article_2894_20250319_103315.html에 저장되었습니다.
+2025-03-19 10:33:16,187 - article_scraper - INFO - HTML 파일에서 내용 추출: page_sources/wishket_article_2894_20250319_103315.html
+2025-03-19 10:33:16,413 - article_scraper - INFO - 선택된 컨테이너: main.
+2025-03-19 10:33:16,425 - article_scraper - INFO - HTML 파일에서 8162자 추출됨
+2025-03-19 10:39:05,176 - article_scraper - INFO - 스크랩 시작: https://yozm.wishket.com/magazine/detail/2895 (사이트 유형: wishket)
+2025-03-19 10:39:05,178 - WDM - INFO - ====== WebDriver manager ======
+2025-03-19 10:39:07,488 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-19 10:39:07,518 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-19 10:39:07,546 - WDM - INFO - Driver [C:\Users\HP\.wdm\drivers\chromedriver\win64\134.0.6998.88\chromedriver-win32/chromedriver.exe] found in cache
+2025-03-19 10:39:10,287 - article_scraper - INFO - 기사 컨텐츠 로드 완료
+2025-03-19 10:39:13,582 - article_scraper - INFO - HTML 소스가 page_sources/wishket_article_2895_20250319_103913.html에 저장되었습니다.
+2025-03-19 10:39:13,686 - article_scraper - INFO - HTML 파일에서 내용 추출: page_sources/wishket_article_2895_20250319_103913.html
+2025-03-19 10:39:13,957 - article_scraper - INFO - 선택된 컨테이너: main.
+2025-03-19 10:39:13,972 - article_scraper - INFO - HTML 파일에서 7009자 추출됨

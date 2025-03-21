@@ -1,0 +1,84 @@
+2025-03-19 11:40:36,252 - article_scraper - INFO - 스크랩 시작: https://yozm.wishket.com/magazine/detail/2887 (사이트 유형: wishket)
+2025-03-19 11:40:36,256 - WDM - INFO - ====== WebDriver manager ======
+2025-03-19 11:40:38,764 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-19 11:40:38,834 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-19 11:40:38,869 - WDM - INFO - Driver [C:\Users\HP\.wdm\drivers\chromedriver\win64\134.0.6998.88\chromedriver-win32/chromedriver.exe] found in cache
+2025-03-19 11:40:41,783 - article_scraper - INFO - 기사 컨텐츠 로드 완료
+2025-03-19 11:40:45,128 - article_scraper - INFO - HTML 소스가 page_sources/wishket_article_2887_20250319_114044.html에 저장되었습니다.
+2025-03-19 11:40:45,210 - article_scraper - INFO - HTML 파일에서 내용 추출: page_sources/wishket_article_2887_20250319_114044.html
+2025-03-19 11:40:45,498 - article_scraper - INFO - 선택된 컨테이너: main.
+2025-03-19 11:40:45,515 - article_scraper - INFO - HTML 파일에서 7061자 추출됨
+2025-03-19 11:40:58,995 - article_scraper - INFO - 스크랩 시작: https://yozm.wishket.com/magazine/detail/2889 (사이트 유형: wishket)
+2025-03-19 11:40:58,997 - WDM - INFO - ====== WebDriver manager ======
+2025-03-19 11:41:01,191 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-19 11:41:01,218 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-19 11:41:01,247 - WDM - INFO - Driver [C:\Users\HP\.wdm\drivers\chromedriver\win64\134.0.6998.88\chromedriver-win32/chromedriver.exe] found in cache
+2025-03-19 11:41:03,662 - article_scraper - INFO - 기사 컨텐츠 로드 완료
+2025-03-19 11:41:06,924 - article_scraper - INFO - HTML 소스가 page_sources/wishket_article_2889_20250319_114106.html에 저장되었습니다.
+2025-03-19 11:41:07,008 - article_scraper - INFO - HTML 파일에서 내용 추출: page_sources/wishket_article_2889_20250319_114106.html
+2025-03-19 11:41:07,220 - article_scraper - INFO - 선택된 컨테이너: main.
+2025-03-19 11:41:07,230 - article_scraper - INFO - HTML 파일에서 4526자 추출됨
+2025-03-19 12:53:06,825 - article_scraper - INFO - HTML 파일에서 내용 추출: page_sources\wishket_article_2889_20250319_114106.html
+2025-03-19 12:53:06,899 - article_scraper - INFO - 선택된 컨테이너: main.
+2025-03-19 12:53:06,908 - article_scraper - INFO - HTML 파일에서 4526자 추출됨
+2025-03-19 17:41:43,084 - article_scraper - INFO - HTML 파일에서 내용 추출: page_sources\wishket_article_2889_20250319_114106.html
+2025-03-19 17:41:43,358 - article_scraper - INFO - 선택된 컨테이너: main.
+2025-03-19 17:41:43,373 - article_scraper - INFO - HTML 파일에서 4526자 추출됨
+2025-03-19 17:41:46,528 - article_scraper - INFO - 스크랩 시작: https://juejin.cn/post/7479043382138191912 (사이트 유형: unknown)
+2025-03-19 17:41:46,531 - WDM - INFO - ====== WebDriver manager ======
+2025-03-19 17:41:49,013 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-19 17:41:49,093 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-19 17:41:49,131 - WDM - INFO - Driver [C:\Users\HP\.wdm\drivers\chromedriver\win64\134.0.6998.88\chromedriver-win32/chromedriver.exe] found in cache
+2025-03-19 17:41:54,162 - article_scraper - INFO - 기사 컨텐츠 로드 완료
+2025-03-19 17:41:57,395 - article_scraper - INFO - HTML 소스가 page_sources/unknown_article_7479043382138191912_20250319_174157.html에 저장되었습니다.
+2025-03-21 09:53:41,843 - article_scraper - INFO - 스크랩 시작: https://yozm.wishket.com/magazine/detail/3024 (사이트 유형: wishket)
+2025-03-21 09:53:41,848 - WDM - INFO - ====== WebDriver manager ======
+2025-03-21 09:53:45,804 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-21 09:53:45,864 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-21 09:53:45,891 - WDM - INFO - There is no [win64] chromedriver "134.0.6998.90" for browser google-chrome "134.0.6998" in cache
+2025-03-21 09:53:45,891 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-21 09:53:45,973 - WDM - INFO - WebDriver version 134.0.6998.90 selected
+2025-03-21 09:53:45,978 - WDM - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.90/win32/chromedriver-win32.zip
+2025-03-21 09:53:45,979 - WDM - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.90/win32/chromedriver-win32.zip
+2025-03-21 09:53:46,048 - WDM - INFO - Driver downloading response is 200
+2025-03-21 09:53:46,215 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-21 09:53:46,437 - WDM - INFO - Driver has been saved in cache [C:\Users\HP\.wdm\drivers\chromedriver\win64\134.0.6998.90]
+2025-03-21 09:53:49,542 - article_scraper - INFO - 기사 컨텐츠 로드 완료
+2025-03-21 09:53:52,865 - article_scraper - INFO - HTML 소스가 page_sources/wishket_article_3024_20250321_095352.html에 저장되었습니다.
+2025-03-21 09:53:52,941 - article_scraper - INFO - HTML 파일에서 내용 추출: page_sources/wishket_article_3024_20250321_095352.html
+2025-03-21 09:53:53,180 - article_scraper - INFO - 선택된 컨테이너: main.
+2025-03-21 09:53:53,192 - article_scraper - INFO - HTML 파일에서 6776자 추출됨
+2025-03-21 09:58:00,629 - article_scraper - INFO - 스크랩 시작: https://yozm.wishket.com/magazine/detail/3026 (사이트 유형: wishket)
+2025-03-21 09:58:00,630 - WDM - INFO - ====== WebDriver manager ======
+2025-03-21 09:58:04,059 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-21 09:58:04,095 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-21 09:58:04,131 - WDM - INFO - Driver [C:\Users\HP\.wdm\drivers\chromedriver\win64\134.0.6998.90\chromedriver-win32/chromedriver.exe] found in cache
+2025-03-21 09:58:06,870 - article_scraper - INFO - 기사 컨텐츠 로드 완료
+2025-03-21 09:58:10,191 - article_scraper - INFO - HTML 소스가 page_sources/wishket_article_3026_20250321_095809.html에 저장되었습니다.
+2025-03-21 09:58:10,282 - article_scraper - INFO - HTML 파일에서 내용 추출: page_sources/wishket_article_3026_20250321_095809.html
+2025-03-21 09:58:10,520 - article_scraper - INFO - 선택된 컨테이너: main.
+2025-03-21 09:58:10,531 - article_scraper - INFO - HTML 파일에서 5823자 추출됨
+2025-03-21 09:58:45,704 - article_scraper - INFO - HTML 파일에서 내용 추출: page_sources\unknown_article_7479043382138191912_20250319_174157.html
+2025-03-21 09:58:46,219 - article_scraper - INFO - 선택된 컨테이너: main.container main-container with-global-banner
+2025-03-21 09:58:46,251 - article_scraper - INFO - HTML 파일에서 9801자 추출됨
+2025-03-21 09:58:48,316 - article_scraper - INFO - HTML 파일에서 내용 추출: page_sources\wishket_article_3026_20250321_095809.html
+2025-03-21 09:58:48,391 - article_scraper - INFO - 선택된 컨테이너: main.
+2025-03-21 09:58:48,400 - article_scraper - INFO - HTML 파일에서 5823자 추출됨
+2025-03-21 09:58:56,074 - article_scraper - INFO - HTML 파일에서 내용 추출: page_sources\wishket_article_3024_20250321_095352.html
+2025-03-21 09:58:56,147 - article_scraper - INFO - 선택된 컨테이너: main.
+2025-03-21 09:58:56,157 - article_scraper - INFO - HTML 파일에서 6776자 추출됨
+2025-03-21 09:59:15,313 - article_scraper - INFO - HTML 파일에서 내용 추출: page_sources\article_2887_20250318_115835.html
+2025-03-21 09:59:15,821 - article_scraper - INFO - 선택된 컨테이너: main.
+2025-03-21 09:59:15,833 - article_scraper - INFO - HTML 파일에서 7061자 추출됨
+2025-03-21 09:59:31,015 - article_scraper - INFO - HTML 파일에서 내용 추출: page_sources\unknown_article_7479043382138191912_20250319_174157.html
+2025-03-21 09:59:31,119 - article_scraper - INFO - 선택된 컨테이너: main.container main-container with-global-banner
+2025-03-21 09:59:31,148 - article_scraper - INFO - HTML 파일에서 9801자 추출됨
+2025-03-21 09:59:34,482 - article_scraper - INFO - HTML 파일에서 내용 추출: page_sources\wishket_article_2894_20250319_103315.html
+2025-03-21 09:59:34,914 - article_scraper - INFO - 선택된 컨테이너: main.
+2025-03-21 09:59:34,923 - article_scraper - INFO - HTML 파일에서 8162자 추출됨
+2025-03-21 09:59:42,336 - article_scraper - INFO - HTML 파일에서 내용 추출: page_sources\article_3005_20250318_113213.html
+2025-03-21 09:59:42,771 - article_scraper - INFO - 선택된 컨테이너: main.
+2025-03-21 09:59:42,781 - article_scraper - INFO - HTML 파일에서 6363자 추출됨
+2025-03-21 10:00:03,350 - article_scraper - INFO - HTML 파일에서 내용 추출: page_sources\wishket_article_3026_20250321_095809.html
+2025-03-21 10:00:03,436 - article_scraper - INFO - 선택된 컨테이너: main.
+2025-03-21 10:00:03,450 - article_scraper - INFO - HTML 파일에서 5823자 추출됨

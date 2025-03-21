@@ -1,0 +1,442 @@
+<html lang="en-US"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="../../img/favicons/2ality-favicon-opaque.svg"><link rel="mask-icon" href="../../img/favicons/2ality-favicon-transparent.svg" color="#00008B"><link rel="apple-touch-icon" href="../../img/favicons/2ality-favicon-180x180.png" sizes="180x180"><title>What is TypeScript? An overview for JavaScript programmers</title><link rel="alternate" type="application/atom+xml" href="https://2ality.com/feeds/posts.atom" title="2ality – JavaScript and more – posts (Atom)"><link rel="stylesheet" href="../../assets/main.css"><meta name="description" content="Read this blog post if you are a JavaScript programmer and want to get a rough idea of what using TypeScript is like (think first step before learning more details). You’ll get answers to the following questions: How is TypeScript code different from JavaScript code? How is TypeScript code run? How does TypeScript help during editing in an IDE? Etc. Note: This blog post does not explain why TypeScript is useful. If you want to know more about that, you can read my TypeScript sales pitch."><meta name="twitter:card" content="summary"><meta name="og:title" content="What is TypeScript? An overview for JavaScript programmers"><meta name="og:description" content="Read this blog post if you are a JavaScript programmer and want to get a rough idea of what using TypeScript is like (think first step before learning more details). You’ll get answers to the following questions: How is TypeScript code different from JavaScript code? How is TypeScript code run? How does TypeScript help during editing in an IDE? Etc. Note: This blog post does not explain why TypeScript is useful. If you want to know more about that, you can read my TypeScript sales pitch."><script src="https://2ality.disqus.com/embed.js" data-timestamp="1742272622617"></script></head><body><div id="top-level"><div id="top-bar"><div id="blog-title"><a href="/index.html"><span>2ality – JavaScript and more</span></a></div><div id="top-links"><a href="../../index.html">Home</a><span class="topbar-separator">|</span><a href="../../p/about.html">About</a><span class="topbar-separator">|</span><a href="../../p/follow.html">Follow</a><span class="topbar-separator">|</span><a href="../../archive.html">Archive</a><span class="topbar-separator">|</span><span><a href="https://www.ecosia.org/search?q=site%3Ahttps%3A%2F%2F2ality.com%2F">Search</a> <picture><source srcset="../../assets/external-link-dark.svg" media="(prefers-color-scheme: dark)" width="16" height="16" style="vertical-align:baseline;"><img src="../../assets/external-link-light.svg" width="16" height="16" style="vertical-align:baseline;"></picture></span><span class="topbar-separator">|</span><span><a href="https://exploringjs.com/">Books</a> <picture><source srcset="../../assets/external-link-dark.svg" media="(prefers-color-scheme: dark)" width="16" height="16" style="vertical-align:baseline;"><img src="../../assets/external-link-light.svg" width="16" height="16" style="vertical-align:baseline;"></picture></span></div></div><div id="page-core"><div id="page-core-content" class="number-headings"><h1>What is TypeScript? An overview for JavaScript programmers</h1><div class="post-subtitle">[2025-02-27] <span><a href="../../archive.html#Tag=dev">dev</a>, <a href="../../archive.html#Tag=typescript">typescript</a></span></div><div class="ad-box"><div class="ad-description">(Ad, please don’t block)</div><div id="ad-core-wrapper"><script async="" type="text/javascript" src="https://cdn.carbonads.com/carbon.js?serve=CKYI5KQI&amp;placement=2alitycom" id="_carbonads_js"><style>.carbon-img img {height: 100px}</style></script><div id="carbonads"><span>
+
+<span class="carbon-wrap">
+	<a href="https://srv.carbonads.net/ads/click/x/GTND427WCV7DV2JMCESLYKQUCEYI5K7YCESIVZ3JCABD453YCTYDT2JKFTYI6K7LC6AI52QECVAD6K3UCEYDCKJKC6SIVKJLCAYDVK3EHJNCLSIZ" class="carbon-img" target="_blank" rel="noopener sponsored">
+		<img src="https://srv.carbonads.net/static/30242/4b723271609d12c16fec10ddea2ce78e9bba0517" alt="ads via Carbon" border="0" height="100" width="130" data-no-statview="no" style="max-width: 130px;">
+	</a>
+	<a href="https://srv.carbonads.net/ads/click/x/GTND427WCV7DV2JMCESLYKQUCEYI5K7YCESIVZ3JCABD453YCTYDT2JKFTYI6K7LC6AI52QECVAD6K3UCEYDCKJKC6SIVKJLCAYDVK3EHJNCLSIZ" class="carbon-text" target="_blank" rel="noopener sponsored">
+		Build your website for just $3.88/mth. More value and performance with Namecheap.
+	</a>
+</span>
+<a href="http://carbonads.net/?utm_source=2alitycom&amp;utm_medium=ad_via_link&amp;utm_campaign=in_unit&amp;utm_term=carbon" class="carbon-poweredby" target="_blank" rel="noopener sponsored">ads via Carbon</a>
+</span></div></div></div><div><p>Read this blog post if you are a JavaScript programmer and want to get a rough idea of what using TypeScript is like (think first step before learning more details). You’ll get answers to the following questions:</p>
+<ul>
+<li>How is TypeScript code different from JavaScript code?</li>
+<li>How is TypeScript code run?</li>
+<li>How does TypeScript help during editing in an IDE?</li>
+<li>Etc.</li>
+</ul>
+<p>Note: <strong>This blog post does not explain why TypeScript is useful.</strong> If you want to know more about that, you can read <a href="https://exploringjs.com/tackling-ts/ch_why-typescript.html">my TypeScript sales pitch</a>.</p>
+<!--more-->
+<nav class="table-of-contents">
+<ul>
+  <li>
+    <a href="#typescript-is-javascript-plus-type-syntax">TypeScript is JavaScript plus type syntax</a>
+  </li>
+  <li>
+    <a href="#ways-of-running-typescript-code">Ways of running TypeScript code</a>
+    <ul>
+      <li>
+        <a href="#running-typescript-directly">Running TypeScript directly</a>
+      </li>
+      <li>
+        <a href="#bundling-typescript">Bundling TypeScript</a>
+      </li>
+      <li>
+        <a href="#transpiling-typescript-to-javascript">Transpiling TypeScript to JavaScript</a>
+      </li>
+      <li>
+        <a href="#the-filename-extensions-of-locally-imported-typescript-modules">The filename extensions of locally imported TypeScript modules</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="#publishing-a-library-package-to-the-npm-registry">Publishing a library package to the npm registry</a>
+    <ul>
+      <li>
+        <a href="#essential%3A-.js-and-.d.ts">Essential: <code>.js</code> and <code>.d.ts</code></a>
+      </li>
+      <li>
+        <a href="#optional%3A-source-maps">Optional: source maps</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="#definitelytyped%3A-a-repository-with-types-for-type-less-npm-packages">DefinitelyTyped: a repository with types for type-less npm packages</a>
+  </li>
+  <li>
+    <a href="#compiling-typescript-with-tools-other-than-tsc">Compiling TypeScript with tools other than <code>tsc</code></a>
+    <ul>
+      <li>
+        <a href="#type-stripping">Type stripping</a>
+      </li>
+      <li>
+        <a href="#isolated-declarations">Isolated declarations</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="#jsr-%E2%80%93-the-javascript-registry">JSR – the JavaScript registry</a>
+    <ul>
+      <li>
+        <a href="#who-owns-jsr%3F">Who owns JSR?</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="#editing-typescript">Editing TypeScript</a>
+  </li>
+  <li>
+    <a href="#check-js">Type-checking JavaScript files</a>
+  </li>
+  <li>
+    <a href="#further-reading">Further reading</a>
+  </li>
+</ul>
+</nav>
+<h2 id="typescript-is-javascript-plus-type-syntax" tabindex="-1">TypeScript is JavaScript plus type syntax&nbsp;&nbsp;<a class="heading-anchor" href="#typescript-is-javascript-plus-type-syntax" aria-hidden="true">#</a></h2>
+<p>Even though the following description of TypeScript is not 100% accurate (there are a few exceptions), I find it helpful for figuring out how it works: <em>TypeScript is JavaScript plus type syntax.</em></p>
+<p>Consider the following TypeScript code:</p>
+<pre><code class="language-ts"><span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>): <span class="hljs-built_in">number</span> {
+  <span class="hljs-keyword">return</span> x + y;
+}
+</code></pre>
+<p>If we want to run this code, we have to remove the type syntax and get JavaScript that is executed by a JavaScript engine:</p>
+<pre><code class="language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">x, y</span>) {
+  <span class="hljs-keyword">return</span> x + y;
+}
+</code></pre>
+<p>The type syntax is only used for type checking (during editing and compiling) and gives us many consistency checks and better auto-completion.</p>
+<h2 id="ways-of-running-typescript-code" tabindex="-1">Ways of running TypeScript code&nbsp;&nbsp;<a class="heading-anchor" href="#ways-of-running-typescript-code" aria-hidden="true">#</a></h2>
+<p>Consider the following TypeScript project:</p>
+<pre><code>ts-app/
+  tsconfig.json
+  src/
+    main.ts
+    util.ts
+    util_test.ts
+  test/
+    integration_test.ts
+</code></pre>
+<ul>
+<li><code>tsconfig.json</code> is a configuration file that tells TypeScript how to type-check and compile our code.</li>
+<li>The remaining files are TypeScript source code.</li>
+</ul>
+<p>Let’s explore the different ways in which we can run this code.</p>
+<h3 id="running-typescript-directly" tabindex="-1">Running TypeScript directly&nbsp;&nbsp;<a class="heading-anchor" href="#running-typescript-directly" aria-hidden="true">#</a></h3>
+<p>Most server-side runtimes now can run TypeScript code directly – e.g., Node.js, Deno and Bun. In other words, the following works in Node.js 23.6.0+:</p>
+<pre><code>cd ts-app/
+node src/main.ts
+</code></pre>
+<h3 id="bundling-typescript" tabindex="-1">Bundling TypeScript&nbsp;&nbsp;<a class="heading-anchor" href="#bundling-typescript" aria-hidden="true">#</a></h3>
+<p>When developing a web app, <em>bundling</em> is a common practice – even for pure JavaScript projects: All the JavaScript code (app code and library code) is combined into a single JavaScript file (sometimes more, but never more than a few) – which is typically loaded from an HTML file. That has several benefits:</p>
+<ul>
+<li>Prior to HTTP/2, only one file could be served per connection. But that benefit of bundling is not relevant anymore.
+<ul>
+<li>Each file the client has to request and process, still incurs a little overhead (even though no new connection is opened).</li>
+</ul>
+</li>
+<li>Web servers don’t have to serve many (often small) files –&nbsp;which helps with efficiency.</li>
+<li>A single large file can be compressed better than many small files.</li>
+</ul>
+<p>Most bundlers support TypeScript – either directly or via plugins. That means, we run our TypeScript code via the JavaScript file <code>bundle.js</code> that was produced by a bundler:</p>
+<pre><code>ts-app/
+  tsconfig.json
+  src/
+    main.ts
+    util.ts
+    util_test.ts
+  test/
+    integration_test.ts
+  dist/
+    bundle.js
+</code></pre>
+<h3 id="transpiling-typescript-to-javascript" tabindex="-1">Transpiling TypeScript to JavaScript&nbsp;&nbsp;<a class="heading-anchor" href="#transpiling-typescript-to-javascript" aria-hidden="true">#</a></h3>
+<p>Another option is to compile out TypeScript app to JavaScript via the TypeScript compiler <code>tsc</code> and run the resulting code. Before server-side JavaScript runtimes had built-in support for TypeScript, that was the only way we could run TypeScript there.</p>
+<p>Compiling source code to source code is also called <em>transpiling</em>. <code>tsconfig.json</code> determines where the transpilation output is written. Let’s assume we write it to the directory <code>dist/</code>:</p>
+<pre><code>ts-app/
+  tsconfig.json
+  src/
+    main.ts
+    util.ts
+    util_test.ts
+  test/
+    integration_test.ts
+  dist/
+    src/
+      main.js
+      util.js
+      util_test.js
+    test/
+      integration_test.js
+</code></pre>
+<h3 id="the-filename-extensions-of-locally-imported-typescript-modules" tabindex="-1">The filename extensions of locally imported TypeScript modules&nbsp;&nbsp;<a class="heading-anchor" href="#the-filename-extensions-of-locally-imported-typescript-modules" aria-hidden="true">#</a></h3>
+<p>By default, TypeScript does not change the specifiers of imported modules. That means that local imports of transpiled code must look like this:</p>
+<pre><code class="language-ts"><span class="hljs-comment">// main.ts</span>
+<span class="hljs-keyword">import</span> {helperFunc} <span class="hljs-keyword">from</span> <span class="hljs-string">'./util.js'</span>;
+</code></pre>
+<p>However, we can also tell TypeScript to rewrite the filename extension <code>.ts</code> to <code>.js</code> (<a href="https://2ality.com/2025/01/tsconfig-json.html#running-typescript-directly-(without-generating-js-files)">more information</a>). Then the following import works for both directly running our code and transpiling it:</p>
+<pre><code class="language-ts"><span class="hljs-comment">// main.ts</span>
+<span class="hljs-keyword">import</span> {helperFunc} <span class="hljs-keyword">from</span> <span class="hljs-string">'./util.ts'</span>;
+</code></pre>
+<h2 id="publishing-a-library-package-to-the-npm-registry" tabindex="-1">Publishing a library package to the npm registry&nbsp;&nbsp;<a class="heading-anchor" href="#publishing-a-library-package-to-the-npm-registry" aria-hidden="true">#</a></h2>
+<p>The npm registry is still the most popular way of publishing packages. Even though Node.js supports app packages being written in TypeScript, library packages must be deployed as JavaScript code – so that they can be consumed by either JavaScript or TypeScript. Therefore, a single library file <code>lib.ts</code> is often deployed as five files (four of which are compiled by TypeScript from <code>lib.ts</code>):</p>
+<ul>
+<li>Essential:
+<ul>
+<li><code>lib.js</code>: the JavaScript part of <code>lib.ts</code></li>
+<li><code>lib.d.ts</code>: the type part of <code>lib.ts</code></li>
+</ul>
+</li>
+<li>Optional: source maps. They map source code locations of compilation output to <code>lib.ts</code>.
+<ul>
+<li><code>lib.js.map</code>: source map for <code>lib.js</code></li>
+<li><code>lib.d.ts.map</code>: source map for <code>lib.d.ts</code></li>
+<li><code>lib.ts</code>: the target of the previous two source maps</li>
+</ul>
+</li>
+</ul>
+<p>(More on what all of that means in a second.)</p>
+<p>As an example, consider the following library package:</p>
+<pre><code>ts-lib/
+  package.json
+  tsconfig.json
+  src/
+    lib.ts
+  dist/
+    src/
+      lib.js
+      lib.js.map
+      lib.d.ts
+      lib.d.ts.map
+</code></pre>
+<ul>
+<li><code>package.json</code> is npm’s description of our library package. Some of its data, such as the so-called <em>package exports</em>, are also used by TypeScript – e.g. to look up type information when someone imports from our package.</li>
+<li>Every file in <code>dist/</code> was generated by TypeScript. It is usually not added to version control systems because it can easily be regenerated.</li>
+<li>Only <code>tsconfig.json</code> is not uploaded to the npm registry.</li>
+</ul>
+<h3 id="essential%3A-.js-and-.d.ts" tabindex="-1">Essential: <code>.js</code> and <code>.d.ts</code>&nbsp;&nbsp;<a class="heading-anchor" href="#essential%3A-.js-and-.d.ts" aria-hidden="true">#</a></h3>
+<p>It’s interesting to see the combined JavaScript plus types in <code>.lib.ts</code> be split into <code>lib.js</code> with only JavaScript and <code>lib.d.ts</code> with only types. Why do that? It enables library packages to be used by either JavaScript code or TypeScript code:</p>
+<ul>
+<li>JavaScript code can ignore <code>.d.ts</code> files.</li>
+<li>TypeScript uses them for type checking, auto-completion and documentation.</li>
+</ul>
+<p>Actually, behind the scenes, many editors (e.g. Visual Studio Code) use a kind of lightweight TypeScript mode when editing JavaScript code so that we also get simple type checking and code completion there.</p>
+<p>This is the TypeScript input <code>lib.ts</code></p>
+<pre><code class="language-ts"><span class="hljs-comment">/** Add two numbers. */</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>): <span class="hljs-built_in">number</span> {
+  <span class="hljs-keyword">return</span> x + y; <span class="hljs-comment">// numeric addition</span>
+}
+</code></pre>
+<p>It is split into <code>lib.js</code> on one hand:</p>
+<pre><code class="language-js"><span class="hljs-comment">/** Add two numbers. */</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">x, y</span>) {
+    <span class="hljs-keyword">return</span> x + y; <span class="hljs-comment">// numeric addition</span>
+}
+<span class="hljs-comment">//# sourceMappingURL=lib.js.map</span>
+</code></pre>
+<p>And <code>lib.d.ts</code> on the other hand:</p>
+<pre><code class="language-ts"><span class="hljs-comment">/** Add two numbers. */</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">declare</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>): <span class="hljs-built_in">number</span>;
+<span class="hljs-comment">//# sourceMappingURL=lib.d.ts.map</span>
+</code></pre>
+<p>Notes:</p>
+<ul>
+<li>Both files point to their source maps.</li>
+<li>By default, both files contain comments (but we can tell TypeScript not to include them):
+<ul>
+<li><code>lib.js</code> has all comments so that the code is easier to read.</li>
+<li><code>lib.d.ts</code> only has JSDoc comments (<code>/** */</code>) because they are used by many IDEs to display inline documentation.</li>
+</ul>
+</li>
+</ul>
+<h3 id="optional%3A-source-maps" tabindex="-1">Optional: source maps&nbsp;&nbsp;<a class="heading-anchor" href="#optional%3A-source-maps" aria-hidden="true">#</a></h3>
+<p>If we compile a file <code>I</code> to a file <code>O</code> then a source map for <code>O</code> maps source code locations in <code>O</code> to source code locations in <code>I</code>. That means we can work with <code>O</code> but display information from <code>I</code> –&nbsp;e.g.:</p>
+<ul>
+<li><code>lib.js.map</code>: maps <code>lib.js</code> locations to <code>lib.ts</code> locations and gives us debugging and stack traces for the latter when we run the former.</li>
+<li><code>lib.d.ts.map</code>: maps <code>lib.d.ts</code> lines to <code>lib.ts</code> lines. It enables “go to definition” for imports from <code>lib.ts</code> to take us to that file.</li>
+</ul>
+<p>All source-map-related functionality except stack traces require access to the original TypeScript source code. That’s why it makes sense to include <code>lib.ts</code> if there are source maps.</p>
+<p>This is what <code>lib.js.map</code> looks like:</p>
+<pre><code class="language-ts">{
+  <span class="hljs-string">"version"</span>: <span class="hljs-number">3</span>,
+  <span class="hljs-string">"file"</span>: <span class="hljs-string">"lib.js"</span>,
+  <span class="hljs-string">"sourceRoot"</span>: <span class="hljs-string">""</span>,
+  <span class="hljs-string">"sources"</span>: [
+    <span class="hljs-string">"../../src/lib.ts"</span>
+  ],
+  <span class="hljs-string">"names"</span>: [],
+  <span class="hljs-string">"mappings"</span>: <span class="hljs-string">"AAAA,uBAAuB;AACvB,MAAM,UAAU,···"</span>
+}
+</code></pre>
+<p>This is what <code>lib.d.ts.map</code> looks like:</p>
+<pre><code class="language-ts">{
+  <span class="hljs-string">"version"</span>: <span class="hljs-number">3</span>,
+  <span class="hljs-string">"file"</span>: <span class="hljs-string">"lib.d.ts"</span>,
+  <span class="hljs-string">"sourceRoot"</span>: <span class="hljs-string">""</span>,
+  <span class="hljs-string">"sources"</span>: [
+    <span class="hljs-string">"../../src/lib.ts"</span>
+  ],
+  <span class="hljs-string">"names"</span>: [],
+  <span class="hljs-string">"mappings"</span>: <span class="hljs-string">"AAAA,uBAAuB;AACvB,wBAAgB,GAAG,···"</span>
+}
+</code></pre>
+<p>In both cases, the actual content of <code>"mappings"</code> was abbreviated. And in the actual output of <code>tsc</code>, the JSON is always squeezed into a single line.</p>
+<h2 id="definitelytyped%3A-a-repository-with-types-for-type-less-npm-packages" tabindex="-1">DefinitelyTyped: a repository with types for type-less npm packages&nbsp;&nbsp;<a class="heading-anchor" href="#definitelytyped%3A-a-repository-with-types-for-type-less-npm-packages" aria-hidden="true">#</a></h2>
+<p>These days, many npm packages come with TypeScript types. However, not all of them do. In that case, <a href="https://definitelytyped.org">DefinitelyTyped</a> may help: If it supports a type-less package <code>pkg</code> then we can additionally install a package <code>@types/pkg</code> with types for <code>pkg</code>.</p>
+<p>One important DefinitelyTyped package for Node.js is <code>@types/node</code> with types for all of its APIs. If you develop TypeScript on Node.js, you will usually have this package as a development dependency.</p>
+<h2 id="compiling-typescript-with-tools-other-than-tsc" tabindex="-1">Compiling TypeScript with tools other than <code>tsc</code>&nbsp;&nbsp;<a class="heading-anchor" href="#compiling-typescript-with-tools-other-than-tsc" aria-hidden="true">#</a></h2>
+<p>Let’s recap all the tasks performed by <code>tsc</code> (we’ll ignore source maps in this section):</p>
+<ol>
+<li>It compiles TypeScript files to JavaScript files.</li>
+<li>It compiles TypeScript files to type declaration files.</li>
+<li>It type-checks TypeScript files.</li>
+</ol>
+<p>#3 is so complex that only <code>tsc</code> can do it. However, for both #1 and #2, there are slightly simpler subsets of TypeScript where compilation does not involve much more than syntactic processing. That means that we can use external, faster tools for #1 and #2.</p>
+<p>There are even <code>tsconfig.json</code> settings to warn us if we don’t stay within those subsets of TypeScript (<a href="https://2ality.com/2025/01/tsconfig-json.html#compiling-without-tsc">more information</a>). Doing that is not much of a sacrifice in practice.</p>
+<h3 id="type-stripping" tabindex="-1">Type stripping&nbsp;&nbsp;<a class="heading-anchor" href="#type-stripping" aria-hidden="true">#</a></h3>
+<p><em>Type stripping</em> is the simplest way of compiling TypeScript to JavaScript:</p>
+<ul>
+<li>Compilation consists only of removing type syntax.</li>
+<li>No language-level features are transpiled.</li>
+</ul>
+<p>The second point means that several TypeScript features are not supported – e.g.:</p>
+<ul>
+<li>JSX (HTML-ish syntax inside TypeScript, as used, e.g., by React)</li>
+<li>Enums</li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/2/classes.html#parameter-properties">Parameter properties</a> in class constructors.</li>
+<li>Namespaces</li>
+<li>Future JavaScript that is compiled to current JavaScript</li>
+</ul>
+<p>One considerable benefit of type stripping is that it does not need any configuration (via <code>tsconfig.json</code> or other means) because it’s so simple. That makes platforms that use it more stable w.r.t. changes made to TypeScript.</p>
+<h4 id="type-stripping-technique%3A-replacing-types-with-spaces" tabindex="-1">Type stripping technique: replacing types with spaces&nbsp;&nbsp;<a class="heading-anchor" href="#type-stripping-technique%3A-replacing-types-with-spaces" aria-hidden="true">#</a></h4>
+<p>One clever technique for type stripping was pioneered by the <a href="https://bloomberg.github.io/ts-blank-space/"><code>ts-blank-space</code></a> tool (by Ashley Claymore for Bloomberg): Instead of simply removing the type syntax, it replaces it with spaces. That means that source code positions in the output don’t change. Therefore, any positions that show up (e.g.) in stack traces still work for the input and there is less of a need for source maps: You still need them for debugging and going to definitions but JavaScript generated by type stripping is relatively close to the original TypeScript and you are often OK even then.</p>
+<p>For example - input (TypeScript):</p>
+<pre><code class="language-ts"><span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>): <span class="hljs-built_in">number</span> {
+  <span class="hljs-keyword">return</span> x + y;
+}
+</code></pre>
+<p>Output (JavaScript):</p>
+<pre><code class="language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">x        , y        </span>)         {
+  <span class="hljs-keyword">return</span> x + y;
+}
+</code></pre>
+<p>If you want to explore further, you can check out <a href="https://bloomberg.github.io/ts-blank-space/play/">the ts-blank-space playground</a>.</p>
+<h3 id="isolated-declarations" tabindex="-1">Isolated declarations&nbsp;&nbsp;<a class="heading-anchor" href="#isolated-declarations" aria-hidden="true">#</a></h3>
+<p>“Isolated declaration” is a style of writing TypeScript where the types for a declaration file (<code>.d.ts</code>) are easy to extract. That mainly means providing return types for functions that are exported. In principle, TypeScript can figure those out for us, but simple declaration file generators can’t. This constraint does not exist for unexported functions because those don’t show up in declaration files.</p>
+<p>First version of a TypeScript file <code>strings.ts</code>:</p>
+<pre><code class="language-ts"><span class="hljs-comment">// Not OK: exported function without return type</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">upperCase</span>(<span class="hljs-params">str: <span class="hljs-built_in">string</span></span>) {
+  <span class="hljs-keyword">return</span> str.<span class="hljs-title function_">toUpperCase</span>();
+}
+
+<span class="hljs-comment">// Not exported, no return type needed</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">internalHelper</span>(<span class="hljs-params"></span>) {}
+</code></pre>
+<p><code>strings.ts</code> in isolated declaration style:</p>
+<pre><code class="language-ts"><span class="hljs-comment">// OK: exported function has return type</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">upperCase</span>(<span class="hljs-params">str: <span class="hljs-built_in">string</span></span>): <span class="hljs-built_in">string</span> {
+  <span class="hljs-keyword">return</span> str.<span class="hljs-title function_">toUpperCase</span>();
+}
+
+<span class="hljs-comment">// Not exported, no return type needed</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">internalHelper</span>(<span class="hljs-params"></span>) {}
+</code></pre>
+<p>This is the generated declaration file <code>strings.d.ts</code> (note that <code>internalHelper</code> is not in it):</p>
+<pre><code class="language-ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">declare</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">upperCase</span>(<span class="hljs-params">str: <span class="hljs-built_in">string</span></span>): <span class="hljs-built_in">string</span>;
+</code></pre>
+<h2 id="jsr-%E2%80%93-the-javascript-registry" tabindex="-1">JSR – the JavaScript registry&nbsp;&nbsp;<a class="heading-anchor" href="#jsr-%E2%80%93-the-javascript-registry" aria-hidden="true">#</a></h2>
+<p><a href="https://jsr.io">The JavaScript registry JSR</a> is an alternative to npm and the npm registry for publishing packages. It works as follows:</p>
+<ul>
+<li>For TypeScript packages, you only upload <code>.ts</code> files.</li>
+<li>How to install a TypeScript package depends on the platform:
+<ul>
+<li>On JavaScript platforms where TypeScript-only library packages are supported, JSR only installs TypeScript.</li>
+<li>On all other platforms, JSR automatically generates <code>.js</code> files and <code>.d.ts</code> files and installs those, along with the <code>.ts</code> files. To make automatic generation possible, the TypeScript code must follow a set of rules called <a href="https://jsr.io/docs/about-slow-types">“no slow types”</a> – which is similar to <a href="#isolated-declarations">isolated declarations</a>.</li>
+</ul>
+</li>
+</ul>
+<p>In contrast, with the npm registry, your TypeScript library package is only usable on Node.js if you upload <code>.js</code> files and <code>.d.ts</code> files.</p>
+<p>JSR also provides several features that npm doesn’t such as automatic generation of documentation. See <a href="https://jsr.io/docs/why">“Why JSR?”</a> in the official documentation for more information.</p>
+<h3 id="who-owns-jsr%3F" tabindex="-1">Who owns JSR?&nbsp;&nbsp;<a class="heading-anchor" href="#who-owns-jsr%3F" aria-hidden="true">#</a></h3>
+<p>Quoting the official documentation page <a href="https://jsr.io/docs/governance/overview">“Governance”</a>:</p>
+<blockquote>
+<p>JSR is not owned by any one person or organization. It is a community-driven project that is open to all, built for the entire JavaScript ecosystem.</p>
+<p>JSR is currently operated by the Deno company. We are currently working on establishing a governance board to oversee the project, which will then work on moving the project to a foundation.</p>
+</blockquote>
+<h2 id="editing-typescript" tabindex="-1">Editing TypeScript&nbsp;&nbsp;<a class="heading-anchor" href="#editing-typescript" aria-hidden="true">#</a></h2>
+<p>Two popular IDEs for JavaScript are:</p>
+<ul>
+<li><a href="https://code.visualstudio.com/"><em>Visual Studio Code</em></a> (free)</li>
+<li><a href="https://www.jetbrains.com/webstorm/"><em>WebStorm</em></a> (free for non-commercial use)</li>
+</ul>
+<p>The observations in this section are about Visual Studio Code, but may apply to other IDEs, too.</p>
+<p>With Visual Studio Code, we get two different ways of type checking:</p>
+<ul>
+<li>
+<p>Any file that is currently open is automatically type-checked within Visual Studio Code. It order to provide that functionality, it comes with its own installation of TypeScript.</p>
+</li>
+<li>
+<p>If we want to type-check all of a code base, we must invoke the TypeScript compiler <code>tsc</code>. We can do that via Visual Studio Code’s <em>tasks</em> – a built-in way of invoking external tools (for type checking, compiling, bundling, etc.). The official documentation has <a href="https://code.visualstudio.com/Docs/editor/tasks">more information on tasks</a>.</p>
+</li>
+</ul>
+<h2 id="check-js" tabindex="-1">Type-checking JavaScript files&nbsp;&nbsp;<a class="heading-anchor" href="#check-js" aria-hidden="true">#</a></h2>
+<p>Optionally, TypeScript can also type-check JavaScript files. Obviously that will only give us limited results. However, to help TypeScript, we can add type information via JSDoc comments – e.g.:</p>
+<pre><code class="language-js"><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">number</span>} <span class="hljs-variable">x</span> - The first operand
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">number</span>} <span class="hljs-variable">y</span> - The second operand
+ * <span class="hljs-doctag">@returns</span> {<span class="hljs-type">number</span>} The sum of both operands
+ */</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">x, y</span>) {
+  <span class="hljs-keyword">return</span> x + y;
+}
+</code></pre>
+<p>If we do that, we are still writing TypeScript, just with a different syntax.</p>
+<p>Benefits of this approach:</p>
+<ul>
+<li>No need for a build step to run the code – even on platforms (such as browsers) that don’t support TypeScript.
+<ul>
+<li>We can also generate <code>.d.ts</code> files from <code>.js</code> files with JSDoc comments. That is an extra build step, though. How to do that is explained in <a href="https://www.typescriptlang.org/docs/handbook/declaration-files/dts-from-js.html">the TypeScript Handbook</a>.</li>
+</ul>
+</li>
+<li>It enables us to make a JavaScript code base more type-safe – in small incremental steps.</li>
+</ul>
+<p>Downside of this approach:</p>
+<ul>
+<li>The syntax becomes less pleasant to use.</li>
+</ul>
+<p>To explain the downside – consider how we define an interface in TypeScript:</p>
+<pre><code class="language-ts"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Point</span> {
+  <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">y</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-comment">/** optional property */</span>
+  z?: <span class="hljs-built_in">number</span>;
+}
+</code></pre>
+<p>Doing that via a JSDoc comment looks like this:</p>
+<pre><code class="language-js"><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@typedef</span> <span class="hljs-variable">Point</span>
+ * <span class="hljs-doctag">@prop</span> {<span class="hljs-type">number</span>} <span class="hljs-variable">x</span>
+ * <span class="hljs-doctag">@prop</span> {<span class="hljs-type">number</span>} <span class="hljs-variable">y</span>
+ * <span class="hljs-doctag">@prop</span> {<span class="hljs-type">number</span>} [z] optional property
+ */</span>
+</code></pre>
+<p>More information in the TypeScript Handbook:</p>
+<ul>
+<li><a href="https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html">“Type Checking JavaScript Files”</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/declaration-files/dts-from-js.html">“Creating <code>.d.ts</code> Files from <code>.js</code> files”</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html">“JSDoc Reference”</a></li>
+</ul>
+<h2 id="further-reading" tabindex="-1">Further reading&nbsp;&nbsp;<a class="heading-anchor" href="#further-reading" aria-hidden="true">#</a></h2>
+<ul>
+<li>Book <a href="https://exploringjs.com/tackling-ts/">“Tackling TypeScript”</a> (free to read online)</li>
+<li>2ality post <a href="https://2ality.com/2025/01/tsconfig-json.html">“A guide to <code>tsconfig.json</code>”</a></li>
+<li>2ality post <a href="https://2ality.com/2025/02/nodejs-type-stripping-demo.html">“Demo: implementing a Node.js CLI app directly in TypeScript”</a></li>
+<li>2ality post <a href="https://2ality.com/2025/02/typescript-esm-packages.html">“Tutorial: publishing ESM-based npm packages with TypeScript”</a></li>
+</ul>
+</div><div style="margin-top:3rem;">
+    <div id="disqus_thread"><iframe id="dsq-app4393" name="dsq-app4393" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="https://disqus.com/embed/comments/?base=default&amp;f=2ality&amp;t_i=http%3A%2F%2Fwww.2ality.com%2F2025%2F02%2Fwhat-is-typescript.html&amp;t_u=http%3A%2F%2Fwww.2ality.com%2F2025%2F02%2Fwhat-is-typescript.html&amp;t_d=What%20is%20TypeScript%3F%20An%20overview%20for%20JavaScript%20programmers&amp;t_t=What%20is%20TypeScript%3F%20An%20overview%20for%20JavaScript%20programmers&amp;s_o=default#version=abad081ce79ec6ad334ccc6c2bc20820" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 932px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>
+    <script>
+      var disqus_config = function () {
+        this.page.url = "http://www.2ality.com/2025/02/what-is-typescript.html";
+        this.page.identifier = "http://www.2ality.com/2025/02/what-is-typescript.html";
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://2ality.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div></div></div><div id="sidebar"><div class="labeled-image"><div class="labeled-image-image"><a href="https://dr-axel.de/"><img src="../../img/axel-head.jpg" alt="Headshot of Dr. Axel Rauschmayer"></a></div><div class="labeled-image-label"><b>Dr. Axel Rauschmayer</b><br><a href="https://dr-axel.de/">Homepage</a> | <a rel="me" href="https://fosstodon.org/@rauschma">Mastodon</a></div></div><div class="labeled-image"><div class="labeled-image-image"><a href="https://exploringjs.com/js/"><img src="../../img/exploring-js-es2024.jpg" alt="Cover of the book “Exploring JavaScript (ES2024 edition)” by Axel Rauschmayer. It shows a rhinoceros."></a></div><div class="labeled-image-label"><a href="https://exploringjs.com/js/">Exploring JavaScript</a><br>Book (free online) and exercises</div></div><div class="labeled-image"><div class="labeled-image-image"><a href="https://exploringjs.com/deep-js/"><img src="../../img/deep-js.jpg" alt="Cover of the book “Deep JavaScript” by Axel Rauschmayer. It shows a freediver who swims under water and follows a rope down into the deep."></a></div><div class="labeled-image-label"><a href="https://exploringjs.com/deep-js/">Deep JavaScript</a><br>Book (free online)</div></div><div class="labeled-image"><div class="labeled-image-image"><a href="https://exploringjs.com/tackling-ts/"><img src="../../img/tackling-ts.jpg" alt="Cover of the book “Tackling TypeScript” by Axel Rauschmayer. It shows a a pair of boxing gloves."></a></div><div class="labeled-image-label"><a href="https://exploringjs.com/tackling-ts/">Tackling TypeScript</a><br>Book (free online)</div></div><div class="labeled-image"><div class="labeled-image-image"><a href="https://exploringjs.com/nodejs-shell-scripting/"><img src="../../img/nodejs-shell-scripting.jpg" alt="Cover of the book “Shell scripting with Node.js” by Dr. Axel Rauschmayer. It shows a field of light blue hexagonal bars, with three yellow ones in the middle."></a></div><div class="labeled-image-label"><a href="https://exploringjs.com/nodejs-shell-scripting/">Node.js shell scripting</a><br>Book (free online)</div></div><div class="labeled-image"><div class="labeled-image-image"><a href="https://ecmascript.news/?utm_source=2ality&amp;utm_medium=banner&amp;utm_campaign=sidebar"><img src="../../img/ecmascript-news-logo.jpg" alt="Logo with text “ES News”"></a></div><div class="labeled-image-label"><a href="https://ecmascript.news/?utm_source=2ality&amp;utm_medium=banner&amp;utm_campaign=sidebar">ECMAScript News</a><br>Newsletter (free)</div></div></div></div><script src="https://cdn.usefathom.com/script.js" data-site="FDLHMKBU" defer=""></script><iframe style="display: none;"></iframe></body></html>
